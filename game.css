@@ -1,0 +1,62 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: url("./assets/bg.png");
+}
+#scoreboard{
+    position: relative;
+    left: 40px;
+    top: 50px;
+    color: white;
+    font-size: 100px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#gameArea{
+    position: relative;
+    left: 110px;
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+}
+#playArea{
+    border: 2px solid yellow;
+    width: 490px;
+    height: 550px;
+}
+#Heading{
+    color: white;
+    text-align: center;
+    font-weight: 900;
+    font-size: 30px;
+    font-family: "Permanent Marker",'Times New Roman', Times, serif;
+}
+#image1,#image2{
+    width: 450px;
+    height: 380px;
+}
+#button{
+    position: relative;
+    left: 40px;
+    display: grid;
+    grid-template-columns: repeat(3,130px);
+}
+#result1,#result2{
+    height: 380px;
+}
+#result{
+    text-align: center;
+    color: white;
+}
+#playAgain{
+    color: white;
+    background-color: yellow;
+    width: 300px;
+    height: 150px;
+    font-size: 50px;
+    border: 0;
+    border-radius: 20px;
+    position: relative;
+    left: 600px;
+}
