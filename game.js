@@ -12,34 +12,34 @@ let score1 = 0;
 let score2 = 0;
 
 const result = document.getElementById('result') 
-result.style.display="none"
+result.style.display = "none";
 
-RockButton.addEventListener('click', () => Pic1("rock-hand"));
-PaperButton.addEventListener('click', () => Pic1("paper-hand"));
-ScissorButton.addEventListener('click', () => Pic1("scissors-hand"));
+RockButton.addEventListener('click', () => makeChoice("rock-hand"));
+PaperButton.addEventListener('click', () => makeChoice("paper-hand"));
+ScissorButton.addEventListener('click', () => makeChoice("scissors-hand"));
 
-function Pic1(choice){
-    img1.src = `./assets/${choice}.png`;
-    const comp = Pic2();
-    check(choice, comp);
+function makeChoice(userChoice){
+    img1.src = `./assets/${userChoice}.png`;
+    const computerChoice = getComputerChoice();
+    determineWinner(userChoice, computerChoice);
 }
 
-function Pic2(){
-    const pictures = ["paper-hand", "rock-hand", "scissors-hand"];
-    const random = Math.floor(Math.random() * pictures.length);
-    const randomPicture = pictures[random];
-    img2.src = `./assets/${randomPicture}.png`;
-    return pictures[random];
+function getComputerChoice(){
+    const choices = ["paper-hand", "rock-hand", "scissors-hand"];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    const computerChoice = choices[randomIndex];
+    img2.src = `./assets/${computerChoice}.png`;
+    return computerChoice;
 }
 
-function check(user, comp) {
-    if (user === comp) {
+function determineWinner(userChoice, computerChoice) {
+    if (userChoice === computerChoice) {
         score1 += 1;
         score2 += 1;
     } else if (
-        (user === 'rock-hand' && comp === 'scissors-hand') ||
-        (user === 'paper-hand' && comp === 'rock-hand') ||
-        (user === 'scissors-hand' && comp === 'paper-hand')
+        (userChoice === 'rock-hand' && computerChoice === 'scissors-hand') ||
+        (userChoice === 'paper-hand' && computerChoice === 'rock-hand') ||
+        (userChoice === 'scissors-hand' && computerChoice === 'paper-hand')
     ) {
         score1 += 1;
     } else {
@@ -47,22 +47,22 @@ function check(user, comp) {
     }
     p1.textContent = score1;
     p2.textContent = score2;
-    gameOver()
+    checkGameOver();
 }
 
-function gameOver(){
-    if (score1+score2===7){
-        RockButton.style.display="none"
-        PaperButton.style.display="none"
-        ScissorButton.style.display="none"
-        result.style.display="inline"
-        if (score1 >> score2){
-            document.getElementById('desicion').textContent = "You Won!!!"
-        } else{
-            document.getElementById('desicion').textContent = "Computer Won!!!"
+function checkGameOver(){
+    if (score1 + score2 === 7){
+        RockButton.style.display = "none";
+        PaperButton.style.display = "none";
+        ScissorButton.style.display = "none";
+        result.style.display = "inline";
+        if (score1 > score2){
+            document.getElementById('decision').textContent = "You Won!!!";
+        } else {
+            document.getElementById('decision').textContent = "Computer Won!!!";
         }
     }
-    document.getElementById('playAgain').addEventListener('click',()=>{
-        window.location.reload()
-    })
+    document.getElementById('playAgain').addEventListener('click', () => {
+        window.location.reload();
+    });
 }
